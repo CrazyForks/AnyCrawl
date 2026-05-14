@@ -32,6 +32,19 @@
 
 </div>
 
+## Sponsors
+
+<div align="center">
+  <p>
+    <a href="https://www.swiftproxy.net/?ref=AnyCrawl">
+      <img src="https://ac-public.anycrawl.dev/sponsors/SWIFTPROXY-1200_628-1.png" alt="SwiftProxy" width="560">
+    </a>
+  </p>
+</div>
+
+Swiftproxy(https://www.swiftproxy.net/?ref=AnyCrawl) — High-performance residential proxies built for scraping, automation, and large-scale data collection. Access 80M+ rotating residential IPs across 195+ countries with stable connections, high anonymity, and developer-friendly integration. Ideal for AI agents, crawlers, browser automation, and anti-bot bypass workflows.
+Free trial available. Use code PROXY90 for an exclusive 10% discount.
+
 ## 📖 Overview
 
 AnyCrawl is a high‑performance crawling and scraping toolkit:
@@ -103,13 +116,13 @@ curl -X POST https://api.anycrawl.dev/v1/scrape \
 
 #### Parameters
 
-| Parameter | Type              | Description                                                                                                                                                                       | Default  |
-| --------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| url       | string (required) | The URL to be scraped. Must be a valid URL starting with http:// or https://                                                                                                      | -        |
-| engine    | string            | Scraping engine to use. Options: `cheerio` (static HTML parsing, fastest), `playwright` (JavaScript rendering with modern engine), `puppeteer` (JavaScript rendering with Chrome) | cheerio  |
-| proxy     | string            | Proxy URL for the request. Supports HTTP and SOCKS proxies. Format: `http://[username]:[password]@proxy:port`                                                                     | _(none)_ |
-| max_age   | number            | Cache control (ms). `0` = force refresh (skip cache read); `> 0` = accept cached content within this age; omit to use default.                                                    | _(none)_ |
-| store_in_cache | boolean       | Cache control. Whether to store the result in cache. To bypass cache reads, use `max_age=0`.                                                                                      | true     |
+| Parameter      | Type              | Description                                                                                                                                                                       | Default  |
+| -------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| url            | string (required) | The URL to be scraped. Must be a valid URL starting with http:// or https://                                                                                                      | -        |
+| engine         | string            | Scraping engine to use. Options: `cheerio` (static HTML parsing, fastest), `playwright` (JavaScript rendering with modern engine), `puppeteer` (JavaScript rendering with Chrome) | cheerio  |
+| proxy          | string            | Proxy URL for the request. Supports HTTP and SOCKS proxies. Format: `http://[username]:[password]@proxy:port`                                                                     | _(none)_ |
+| max_age        | number            | Cache control (ms). `0` = force refresh (skip cache read); `> 0` = accept cached content within this age; omit to use default.                                                    | _(none)_ |
+| store_in_cache | boolean           | Cache control. Whether to store the result in cache. To bypass cache reads, use `max_age=0`.                                                                                      | true     |
 
 More parameters: see [Request Parameters](https://docs.anycrawl.dev/en/general/scrape#request-parameters).
 
@@ -209,12 +222,11 @@ curl -X POST https://api.anycrawl.dev/v1/search \
 
 We welcome contributions! See the [Contributing Guide](CONTRIBUTING.md).
 
-
 ## Backers
+
 Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/anycrawl)]
 
 <a href="https://opencollective.com/anycrawl"><img alt="Mocha's backers on Open Collective" src="https://opencollective.com/anycrawl/tiers/backers.svg?limit=30&button=false&avatarHeight=46&width=750"></a>
-
 
 ## 📄 License
 
