@@ -20,6 +20,7 @@ x-common-env: &common-env
   ANYCRAWL_API_CREDITS_ENABLED: ${ANYCRAWL_API_CREDITS_ENABLED:-true}
   ANYCRAWL_API_DB_TYPE: postgresql
   ANYCRAWL_API_DB_CONNECTION: postgres://${POSTGRES_USER:-anycrawl}:${POSTGRES_PASSWORD:-anycrawl}@postgres:5432/${POSTGRES_DB:-anycrawl}
+  ANYCRAWL_LOCAL_STORAGE_DIR: /usr/src/app/storage
   MIGRATE_DATABASE: ${MIGRATE_DATABASE:-true}
   ANYCRAWL_SCHEDULER_ENABLED: ${ANYCRAWL_SCHEDULER_ENABLED:-true}
   ANYCRAWL_WEBHOOKS_ENABLED: ${ANYCRAWL_WEBHOOKS_ENABLED:-true}
@@ -46,6 +47,7 @@ services:
     image: ghcr.io/any4ai/anycrawl-scrape-playwright:latest
     environment:
       <<: *common-env
+      ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/playwright
     depends_on:
       postgres:
         condition: service_healthy
@@ -58,6 +60,7 @@ services:
     image: ghcr.io/any4ai/anycrawl-scrape-cheerio:latest
     environment:
       <<: *common-env
+      ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/cheerio
     depends_on:
       postgres:
         condition: service_healthy
@@ -72,6 +75,7 @@ services:
     platform: ${ANYCRAWL_PUPPETEER_PLATFORM:-linux/amd64}
     environment:
       <<: *common-env
+      ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/puppeteer
     depends_on:
       postgres:
         condition: service_healthy

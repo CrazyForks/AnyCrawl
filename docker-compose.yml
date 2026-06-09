@@ -16,6 +16,7 @@ x-common-env: &common-env
     ANYCRAWL_API_AUTH_ENABLED: ${ANYCRAWL_API_AUTH_ENABLED:-false}
     ANYCRAWL_API_DB_TYPE: "sqlite"
     ANYCRAWL_API_DB_CONNECTION: "/usr/src/app/db/database.db"
+    ANYCRAWL_LOCAL_STORAGE_DIR: /usr/src/app/storage
 
 services:
     api:
@@ -42,6 +43,7 @@ services:
             target: scrape-puppeteer
         environment:
             <<: *common-env
+            ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/puppeteer
         depends_on:
             - redis
     scrape-playwright:
@@ -52,6 +54,7 @@ services:
             target: scrape-playwright
         environment:
             <<: *common-env
+            ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/playwright
         depends_on:
             - redis
 
@@ -63,6 +66,7 @@ services:
             target: scrape-cheerio
         environment:
             <<: *common-env
+            ANYCRAWL_CRAWLEE_STORAGE_DIR: /tmp/anycrawl-crawlee-storage/cheerio
         depends_on:
             - redis
     redis:

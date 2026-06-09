@@ -33,6 +33,7 @@ export interface EngineOptions {
         isFinishedFunction: () => Promise<boolean>;
     };
     launchContext?: {
+        launcher?: unknown;
         launchOptions?: {
             args?: string[];
             defaultViewport?: {
