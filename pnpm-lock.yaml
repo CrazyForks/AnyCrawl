@@ -495,6 +495,9 @@ importers:
       puppeteer:
         specifier: ^24.4.0
         version: 24.22.0(typescript@5.8.2)
+      zod:
+        specifier: ^3.25.76
+        version: 3.25.76
     devDependencies:
       '@anycrawl/typescript-config':
         specifier: workspace:*

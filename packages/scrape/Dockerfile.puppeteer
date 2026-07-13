@@ -30,7 +30,8 @@ COPY --chown=myuser:myuser packages/ai/package.json ./packages/ai/package.json
 COPY --chown=myuser:myuser packages/template-client/package.json ./packages/template-client/package.json
 COPY --chown=myuser:myuser packages/typescript-config/package.json ./packages/typescript-config/package.json
 USER myuser
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+RUN --mount=type=cache,id=pnpm-glibc,target=/pnpm/store \
+    npm_config_build_from_source=true pnpm install --frozen-lockfile --prod=false
 COPY --chown=myuser:myuser . .
 RUN pnpm build --filter=@anycrawl/libs --filter=@anycrawl/db --filter=@anycrawl/template-client --filter=@anycrawl/ai --filter=@anycrawl/scrape
 RUN rm -rf node_modules
@@ -62,9 +63,10 @@ COPY --chown=myuser:myuser --from=build /usr/src/app/packages/ai/package.json /u
 COPY --chown=myuser:myuser --from=build /usr/src/app/packages/template-client/package.json /usr/src/app/packages/template-client/package.json
 
 USER myuser
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm-glibc,target=/pnpm/store \
+    npm_config_build_from_source=true pnpm install --prod --frozen-lockfile
 RUN npx cloakbrowser install
-# Ensure native modules rebuilt for current platform
+# Ensure better-sqlite3 is compiled inside this glibc image (avoid musl prebuild artifacts)
 RUN pnpm rebuild better-sqlite3
 
 # Ensure puppeteer browsers are properly installed

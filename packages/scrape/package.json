@@ -95,6 +95,7 @@
         "node-cron": "^4.2.1",
         "nodemailer": "^9.0.3",
         "playwright": "^1.51.1",
-        "puppeteer": "^24.4.0"
+        "puppeteer": "^24.4.0",
+        "zod": "^3.25.76"
     }
 }
